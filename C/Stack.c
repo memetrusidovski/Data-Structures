@@ -22,7 +22,7 @@ Stack* createStack(StackNode* head){
 }
 
 //----INSERT A NEW VALUE----
-void insert(Stack* stack, int data){
+void push(Stack* stack, int data){
     //Create new node and set data
     StackNode* newNode = (StackNode*) malloc(sizeof(StackNode));
     newNode->data = data;
@@ -34,17 +34,32 @@ void insert(Stack* stack, int data){
 }
 
 //----POP A VALUE FROM THE STACK----
-StackNode* pop(Stack stack){
+StackNode* pop(Stack* stack){
     //Create a temporay node
     StackNode* temp = (StackNode*) malloc(sizeof(StackNode));
-    temp = stack._top;
+    temp = stack->_top;
     temp->_next = NULL;
 
     //Set new top
-    stack.height--;
-    stack._top = stack._top->_next;
+    stack->_top--;
+    stack->_top = stack->_top->_next;
 
     return temp;
+}
+
+//----PEEK AT THE TOP VALUE----
+int peek(Stack* stack){
+    //Collect data
+    int data = stack->_top->data;
+
+    return data;
+}
+
+void move(Stack* target, Stack* source){
+    source->_top->_next = target->_top;
+    target->_top = target->_top;
+    
+    source->_top = source->_top->_next;
 }
 
 int main(void){
