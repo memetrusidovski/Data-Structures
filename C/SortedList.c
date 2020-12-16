@@ -4,7 +4,7 @@
 typedef struct Data{
     //Any Arbitrary data
     char *name;
-    
+
 } Data;
 
 
@@ -33,10 +33,10 @@ LinkedList_s* createSortedList()
 }
 
 //Creates a node in the stack
-node_sort* createStackNode(leaf* l){
+node_sort* createStackNode(Data* data, int priority){
     node_sort* temp = malloc(sizeof(node_sort));// Allocate memory slot
-    temp->priority = l->freq;//Set values
-    temp->leaf_data = l;
+    temp->priority = priority;
+    temp->data = data;
 
     return temp;
 }
