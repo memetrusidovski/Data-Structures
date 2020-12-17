@@ -84,11 +84,6 @@ node_sort* dequeue(LinkedList_s *list){
     return temp;
 }
 
-void insertLeaf(LinkedList_s *list, leaf* l){
-    node_sort* n = createStackNode(l);
-
-    insert(list, n);
-}
 /*
 int main(void){
     LinkedList_s* linked_list = createSortedList();
