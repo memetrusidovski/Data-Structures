@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct Node{
     int data;
@@ -19,6 +20,7 @@ List* create(){
     return list;
 }
 
+//Adds a value to the end of a list 
 void append(List* list, int data){
     Node* newNode = (Node*) malloc(sizeof(Node));
     newNode->data = data;
@@ -34,6 +36,7 @@ void append(List* list, int data){
     list->size++;
 }
 
+//Add a value to the front of a list 
 void prepend(List* list, int data){
     Node* newNode = (Node*) malloc(sizeof(Node));
     newNode->data = data;
@@ -47,6 +50,35 @@ void prepend(List* list, int data){
     }
     
     list->size++;
+}
+
+//Takes a node and removes it from the list in Constant Time
+void removeNode(Node* node){
+    node->data = node->_next->data;
+    node->_next = node->_next->_next;
+}
+
+//A linear search function
+Node* search(List* list, int find){
+    Node* current = (Node*) malloc(sizeof(Node));
+    current = list->_head;
+
+    while(current != NULL ){
+        if(current->data == find){
+            return current;
+        }else
+        current = current->_next;
+    }
+
+    return current;
+}
+
+//Checks if a value is contained in the list
+bool contains(List* list, int find){
+    if(search(list, find) != NULL)
+        return true;
+
+    return false;
 }
 
 int main(void){
