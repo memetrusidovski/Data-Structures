@@ -8,6 +8,8 @@ public class LinkedList {
 
     }
 
+    
+
 
     static class node{
         int val;
